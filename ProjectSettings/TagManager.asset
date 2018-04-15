@@ -6,6 +6,7 @@ TagManager:
   tags:
   - full
   - half_full
+  - lost
   layers:
   - Default
   - TransparentFX
