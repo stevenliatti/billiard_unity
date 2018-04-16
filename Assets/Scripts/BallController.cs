@@ -34,9 +34,9 @@ public class BallController : MonoBehaviour {
         playerPosition = rb.transform.position;
         endLine = playerPosition + lineSize;
         line = GetComponent<LineRenderer>();
-        player1Text.text = "Player 1 : 0";
+        player1Text.text = "Player 1 (full) : 0";
         player1Text.color = Color.red;
-        player2Text.text = "Player 2 : 0";
+        player2Text.text = "Player 2 (half_full) : 0";
         player1ExternText = player1Text;
         player2ExternText = player2Text;
     }

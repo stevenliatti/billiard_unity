@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class ScoreAndCollision : MonoBehaviour {
 
     public Text myText;
+    public Button myButton;
 
     void Start() {
         myText.gameObject.SetActive(false);
+        myButton.gameObject.SetActive(false);
     }
 
     void OnTriggerEnter(Collider other)
@@ -31,23 +33,25 @@ public class ScoreAndCollision : MonoBehaviour {
             }
 			Debug.Log(myText.text);
             BallController.playing = false;
+            myButton.gameObject.SetActive(true);
         }
         if (other.gameObject.CompareTag("full")) {
 			Destroy(other.gameObject);
             BallController.score1++;
-            BallController.player1ExternText.text = "Player 1 : " + BallController.score1.ToString();
+            BallController.player1ExternText.text = "Player 1 (full) : " + BallController.score1.ToString();
             Debug.Log("full : " + BallController.score1.ToString());
             if (BallController.score1 == 7) {
                 BallController.playing = false;
                 myText.gameObject.SetActive(true);
                 myText.color = Color.red;
                 myText.text = "Player 1 win";
+                myButton.gameObject.SetActive(true);
             }
         }
         if (other.gameObject.CompareTag("half_full")) {
 			Destroy(other.gameObject);
             BallController.score2++;
-            BallController.player2ExternText.text = "Player 2 : " + BallController.score2.ToString();
+            BallController.player2ExternText.text = "Player 2 (half_full) : " + BallController.score2.ToString();
             Debug.Log("half_full : " + BallController.score2.ToString());
             if (BallController.score2 == 7)
             {
@@ -55,8 +59,13 @@ public class ScoreAndCollision : MonoBehaviour {
                 myText.gameObject.SetActive(true);
                 myText.color = Color.red;
                 myText.text = "Player 2 win";
+                myButton.gameObject.SetActive(true);
             }
         }
 
+    }
+
+    public void returnMenu() {
+        Application.LoadLevel("SampleScene");
     }
 }
